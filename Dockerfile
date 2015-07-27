@@ -16,9 +16,11 @@ RUN buildDeps='libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev l
     && docker-php-ext-install mcrypt mbstring bcmath zip pdo_mysql \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
-    && apt-get autoremove \
+    && apt-get purge -y \
+    && apt-get clean autoclean \
+    && apt-get autoremove -y \
     && pecl install memcached \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/ /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
     && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
     && gpg --verify SHASUMS256.txt.asc \
