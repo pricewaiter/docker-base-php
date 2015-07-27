@@ -29,6 +29,11 @@ RUN buildDeps='libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev l
 
 RUN echo 'extension=memcached.so' > /usr/local/etc/php/conf.d/memcached.ini
 
+RUN rm -f /etc/nginx/conf.d/default.conf \
+    && rm -f /etc/nginx/sites-enabled/default \
+    && ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
 WORKDIR /usr/src/app
 
 CMD service nginx start && php-fpm
