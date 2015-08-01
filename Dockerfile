@@ -30,8 +30,9 @@ COPY memcached.so /usr/lib/php/modules/memcached.so
 COPY libmemcached.so.11.0.0 /usr/lib/libmemcached.so.11
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-RUN mkdir -p /etc/nginx/conf.d \
-    mkdir -p /etc/nginx/sites-enabled \
+RUN echo 'extension=memcached.so' > /etc/php/conf.d/memcached.ini \
+    && mkdir -p /etc/nginx/conf.d \
+    && mkdir -p /etc/nginx/sites-enab   led \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
