@@ -1,0 +1,22 @@
+FROM mhart/alpine-node:0.12.7
+
+COPY MIRRORS.txt /etc/apk/repositories
+
+RUN apk --update add \
+    autoconf \
+    bash \
+    curl \
+    g++ \
+    git \
+    libmemcached-dev \
+    make \
+    php-dev \
+    php-pear \
+    zlib-dev
+
+RUN cat /usr/bin/pecl | sed 's|-n ||g' > /usr/bin/pecl2 \
+    && mv /usr/bin/pecl2 /usr/bin/pecl \
+    && chmod +x /usr/bin/pecl \
+    && pecl install memcached-2.1.0
+
+CMD /bin/bash
