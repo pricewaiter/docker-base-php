@@ -12,6 +12,7 @@ RUN apk --update add \
     php-bcmath \
     php-cli \
     php-curl \
+    php-ctype \
     php-dom \
     php-fpm \
     php-gd \
