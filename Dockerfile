@@ -32,7 +32,7 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN echo 'extension=memcached.so' > /etc/php/conf.d/memcached.ini \
     && mkdir -p /etc/nginx/conf.d \
-    && mkdir -p /etc/nginx/sites-enab   led \
+    && mkdir -p /etc/nginx/sites-enabled \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
