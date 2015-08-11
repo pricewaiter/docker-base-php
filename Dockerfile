@@ -9,6 +9,7 @@ RUN apt-get update \
         php5-curl \
         php5-fpm \
         php5-gd \
+        php5-memcached \
         php5-mcrypt \
         php5-mysql \
         unzip \
