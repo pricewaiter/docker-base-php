@@ -6,6 +6,7 @@ RUN apt-get update \
         curl \
         git \
         nginx \
+        php-apc \
         php5-curl \
         php5-fpm \
         php5-gd \
