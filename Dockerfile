@@ -1,4 +1,4 @@
-FROM node:0.12.7-slim
+FROM node:0.12.14-slim
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
