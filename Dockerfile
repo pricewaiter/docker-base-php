@@ -1,4 +1,7 @@
-FROM node:0.12.14-slim
+FROM node:6.4-slim
+
+ENV NPM_CONFIG_LOGLEVEL warn
+ENV PATH /usr/src/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -20,9 +23,12 @@ RUN apt-get update \
 
 RUN rm -f /etc/nginx/conf.d/default.conf \
     && rm -f /etc/nginx/sites-enabled/default \
-    && ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stdbout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 WORKDIR /usr/src/app
 
-CMD nginx && php-fpm -F
+COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/php-fpm.conf /etc/php5/fpm/php-fpm.conf
+
+CMD nginx -t && service nginx start && php5-fpm -F
