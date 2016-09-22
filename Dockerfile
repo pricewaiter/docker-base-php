@@ -23,7 +23,7 @@ RUN apt-get update \
 
 RUN rm -f /etc/nginx/conf.d/default.conf \
     && rm -f /etc/nginx/sites-enabled/default \
-    && ln -sf /dev/stdbout /var/log/nginx/access.log \
+    && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 WORKDIR /usr/src/app
