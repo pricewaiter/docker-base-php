@@ -1,4 +1,4 @@
-FROM node:6.6-slim
+FROM node:6.7-slim
 
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV PATH /usr/src/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
