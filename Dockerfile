@@ -1,4 +1,4 @@
-FROM node:6.7-slim
+FROM node:6.9-slim
 
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV PATH /usr/src/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -25,6 +25,8 @@ RUN rm -f /etc/nginx/conf.d/default.conf \
     && rm -f /etc/nginx/sites-enabled/default \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
+
+RUN npm install -g yarn
 
 WORKDIR /usr/src/app
 
