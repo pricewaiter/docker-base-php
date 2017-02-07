@@ -19,7 +19,7 @@ RUN apt-get update \
         unzip \
     && apt-get purge -y --auto-remove \
     && apt-get clean autoclean \
-    && rm -rf /var/lib/{apt,dpkg,cache,log}/ /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/ /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN rm -f /etc/nginx/conf.d/default.conf \
     && rm -f /etc/nginx/sites-enabled/default \
