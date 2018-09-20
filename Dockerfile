@@ -1,5 +1,6 @@
 FROM php:7-apache
 
+
 RUN apt-get update -yq && apt-get install -yq \
     libjpeg62-turbo-dev \
     libpng-dev \
