@@ -1,4 +1,4 @@
-FROM php:7-fpm-alpine3.8
+FROM php:7-fpm
 
 
 RUN apt-get update -yq && apt-get install -yq \
