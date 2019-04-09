@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:7-fpm-alpine3.8
 
 
 RUN apt-get update -yq && apt-get install -yq \
@@ -10,6 +10,8 @@ RUN apt-get update -yq && apt-get install -yq \
     git \
     ssh \
     curl gnupg \
+    python build-essential \
+    nginx \
     && docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install exif \
