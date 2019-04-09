@@ -1,6 +1,5 @@
 FROM php:7-fpm
 
-
 RUN apt-get update -yq && apt-get install -yq \
     libjpeg62-turbo-dev \
     libpng-dev \
@@ -21,5 +20,3 @@ RUN apt-get update -yq && apt-get install -yq \
     && rm -rf /var/lib/apt/lists/* \
     && npm i -g yarn \
     && yarn global add gulp-cli
-
-RUN a2enmod rewrite
