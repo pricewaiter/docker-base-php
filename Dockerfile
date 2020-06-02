@@ -11,11 +11,11 @@ RUN apt-get update -yq && apt-get install -yq \
     curl gnupg \
     python build-essential \
     nginx \
-    && docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ \
+    # && docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install exif \
     && docker-php-ext-install zip \
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash \
+    && curl -sL https://deb.nodesource.com/setup_14.x | bash \
     && apt-get install nodejs -yq \
     && rm -rf /var/lib/apt/lists/* \
     && npm i -g yarn \
